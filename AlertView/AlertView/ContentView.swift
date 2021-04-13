@@ -28,8 +28,10 @@ struct ContentView: View {
             }
             // .alert는 기본적으로 ture이면 나옴.
             .alert(isPresented: $isShowAlert, content: {
+                
 //                Alert(title: Text("Alert!!") )
 //                // ,dismissButton: .cancel() 쓰면 OK가 cancel로 바뀜
+                
                 let primaryButton = Alert.Button.default(Text("Done")) {
                     selectText = "Done"
                 }
