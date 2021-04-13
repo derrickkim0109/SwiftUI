@@ -20,6 +20,7 @@ class WebViewController: UIViewController, WKNavigationDelegate{
     
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         
         self.webView.navigationDelegate = self
         self.webView.load(URLRequest(url: URL(string: url)!))
