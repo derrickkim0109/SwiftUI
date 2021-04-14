@@ -22,8 +22,11 @@ struct ContentView: View {
         VStack{
             
             Button("Scroll To"){
-                proxy?.scrollTo(15)
+                withAnimation(.easeInOut){
+                    proxy?.scrollTo(0, anchor: .top)
+                }
             }
+            .padding()
             
             ScrollView{
                 
