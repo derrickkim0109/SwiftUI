@@ -14,6 +14,7 @@
 		551F76EA2626D706001CD051 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 551F76E92626D706001CD051 /* Preview Assets.xcassets */; };
 		551F76ED2626D706001CD051 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 551F76EB2626D706001CD051 /* LaunchScreen.storyboard */; };
 		551F76F62626D8AD001CD051 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551F76F52626D8AD001CD051 /* WebService.swift */; };
+		55236E5A2627C51F00D6AB19 /* UserDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55236E592627C51F00D6AB19 /* UserDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		551F76EC2626D706001CD051 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		551F76EE2626D706001CD051 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		551F76F52626D8AD001CD051 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		55236E592627C51F00D6AB19 /* UserDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				551F76E22626D704001CD051 /* SceneDelegate.swift */,
 				551F76E42626D704001CD051 /* ContentView.swift */,
 				551F76F52626D8AD001CD051 /* WebService.swift */,
+				55236E592627C51F00D6AB19 /* UserDetailView.swift */,
 				551F76E62626D706001CD051 /* Assets.xcassets */,
 				551F76EB2626D706001CD051 /* LaunchScreen.storyboard */,
 				551F76EE2626D706001CD051 /* Info.plist */,
@@ -151,6 +154,7 @@
 				551F76E12626D704001CD051 /* AppDelegate.swift in Sources */,
 				551F76E32626D704001CD051 /* SceneDelegate.swift in Sources */,
 				551F76F62626D8AD001CD051 /* WebService.swift in Sources */,
+				55236E5A2627C51F00D6AB19 /* UserDetailView.swift in Sources */,
 				551F76E52626D704001CD051 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

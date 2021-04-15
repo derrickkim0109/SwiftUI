@@ -8,7 +8,7 @@
 import SwiftUI
 //  http://mockapi.io/ <- main site URL
 
-// https://6076a03e1ed0ae0017d696a8.mockapi.io/user
+// https://6076a03e1ed0ae0017d696a8.mockapi.io/users
 
 struct ContentView: View {
     
@@ -16,26 +16,40 @@ struct ContentView: View {
     @State private var users = [User]()
     
     var body: some View {
-        ScrollView{
-            
-        LazyVGrid(columns: [GridItem(.flexible())],
-                  content: {
-          
-                    // onAppear 후 마지막으로
-                    ForEach(users) { user in
-                        HStack{
-                            URLImage(urlString: user.avatar)
-                            Text("\(user.name)")
+        
+        NavigationView{
+            ScrollView
+            {
+             LazyVGrid(columns: [GridItem(.flexible())],
+                      content: {
+                        // onAppear 후 마지막으로
+                        ForEach(users)
+                        {
+                            user in
+                            NavigationLink(
+                                destination:
+                                    UserDetailView(user: user),
+                                label: {
+                                    HStack
+                                    {
+                                        URLImage(urlString: user.avatar)
+                                            .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
+                                        
+                                        Text("\(user.name)")
+                                        Spacer()
+                                    }
+                                })
                         }
-                    }
-            
-        })
-        .onAppear{
-            WebService().loadUsers { (users) in
-                self.users = users
+            })
+            }
+            .onAppear
+                {
+                WebService().loadUsers { (users) in
+                    self.users = users
+                }
             }
         }
-      }
+        .navigationBarTitle(Text("User List"), displayMode: .inline)
     }
 }
 

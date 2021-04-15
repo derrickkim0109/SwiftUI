@@ -20,13 +20,13 @@ struct User: Codable, Identifiable {
 
 
 class WebService {
-    // https://6076a03e1ed0ae0017d696a8.mockapi.io/user
+    // https://6076a03e1ed0ae0017d696a8.mockapi.io/users
        
     
     
     func loadUsers(completion: @escaping ([User]) -> Void ) {
         
-        guard let url = URL(string: "https://6076a03e1ed0ae0017d696a8.mockapi.io/user") else{
+        guard let url = URL(string: "https://6076a03e1ed0ae0017d696a8.mockapi.io/users") else{
             return
         }
         
@@ -43,6 +43,7 @@ class WebService {
     }
 }
 
+
 // Image
 class ImageLoader: ObservableObject {
     
@@ -52,6 +53,7 @@ class ImageLoader: ObservableObject {
     @Published var image : UIImage?
     
     var urlString : String
+    
     
     init(urlString: String) {
         self.urlString = urlString
@@ -79,9 +81,10 @@ class ImageLoader: ObservableObject {
             // Background Thread 로 되면 안되서. 비동기 방식으로 해야함 _> self.image = loadImage 이거만 적으면 안됨.
             DispatchQueue.main.async {
                 self.image = loadImage
+                
             }
-        }
-        .resume()
+        }.resume()
+       
     }
     
 }
@@ -95,6 +98,7 @@ struct URLImage: View {
     // 위의 function을 쓸려면 View에서 URL넣는게 강제사항이 되버리는 경우다.
     init(urlString : String) {
         self.loader = ImageLoader(urlString: urlString)
+        
     }
     
     
@@ -104,7 +108,7 @@ struct URLImage: View {
         // image data를 받아오기전에 실패 해버렸을 경우 Optional
         Image(uiImage: loader.image ?? UIImage(named: "placeholderImage")! )
             .resizable()
-            .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
-            .aspectRatio(contentMode: .fill)
+            .aspectRatio(contentMode: .fit)
+       
     }
 }
