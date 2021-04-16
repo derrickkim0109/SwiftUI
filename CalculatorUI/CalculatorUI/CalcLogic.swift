@@ -17,20 +17,24 @@ class CalcLogic {
     var remeberSymbol : String? = nil
     
     func calcLogic() -> Double? {
+        
         switch remeberSymbol {
         case "+":
             calculationResult = digit1! + digit2!
         case "-":
             calculationResult = digit1! - digit2!
         case "+-":
-            calculationResult = -digit2!
+            calculationResult = digit1! * -1
         case "x":
             calculationResult = digit1! * digit2!
         case "÷":
             calculationResult = digit1! / digit2!
         case "%":
             calculationResult = digit1! * 0.01
+        
+            
         default:
+            
             break
         }
         return calculationResult

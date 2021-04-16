@@ -15,14 +15,15 @@ struct CalcButton : View {
     
     var body: some View {
         Circle()
-            .foregroundColor(.orange)
+            .foregroundColor(.gray)
             .overlay(
                 Text(buttonName)
                     .font(.largeTitle)
+                    .foregroundColor(Color.white)
+                    
             )
     }
 }
-
 
 
 struct ContentView: View {
@@ -34,8 +35,7 @@ struct ContentView: View {
     @State private var touchTypingBool = false
     
     var calcCore = CalcLogic()
-    
-    
+   
     let data = [
         ["AC", "+-", "%", "÷"],
         ["7", "8", "9", "x"],
@@ -43,6 +43,7 @@ struct ContentView: View {
         ["1", "2", "3", "+"],
         ["0", ".", "="]
     ]
+    
     
     
     var body: some View {
@@ -70,11 +71,16 @@ struct ContentView: View {
                             calcAction(symbol : data[firstIndex][secondIndex])
                         }, label: {
                             CalcButton(buttonName: data[firstIndex][secondIndex])
+                                
                                 // width와 height의 관계
                                 // 1은 1:1 2는 2:1 // 0.5는 1:2 관계.
                                 // CGFloat
                                 .aspectRatio(1, contentMode: .fit)
+                                
+                                
                         })
+                        
+                        
                         
 //                        // 2. TapGesture 기능 활용.
 //                        CalcButton(buttonName: data[firstIndex][secondIndex])
@@ -87,7 +93,9 @@ struct ContentView: View {
 //                            })
                     }
                 }
+                
                 .padding(.horizontal, 10)
+                
             }
             
             //--------------------------------------------
@@ -99,7 +107,7 @@ struct ContentView: View {
                 GeometryReader(content: { geometry in
                     
                     Capsule()
-                        .foregroundColor(.orange)
+                        .foregroundColor(.gray)
                         // CGSize
                         // 16:9 비율
                         // + 10 은 spacing 값이다.
@@ -108,6 +116,7 @@ struct ContentView: View {
                         .overlay(
                             Text(data[4][0])
                                 .font(.largeTitle)
+                                .foregroundColor(Color.white)
                         )
                         .onAppear{
                             self.geoCircleHeight = geometry.size.height
@@ -143,6 +152,7 @@ struct ContentView: View {
     func calcAction(symbol: String){
         
         
+        
         //------------
         // 이게 String은 Int로 변환이 안되니까 숫자만 따로 걸러짐.
         //------------
@@ -151,6 +161,7 @@ struct ContentView: View {
             
             if touchTypingBool {
                 displayNumber = displayNumber + symbol
+                
             }else{
                 touchTypingBool = true
                 displayNumber = symbol
@@ -166,6 +177,7 @@ struct ContentView: View {
         // 숫자가 아닌경우
         //------------
         else{
+            
             if symbol != "=" {
                 calcCore.remeberSymbol = symbol
             }
@@ -173,7 +185,19 @@ struct ContentView: View {
             
             touchTypingBool = false
             
+            if symbol == "=" && calcCore.digit2 != nil {
+                displayNumber = "\(calcCore.calcLogic()!)"
+            }else if calcCore.digit2 == nil  {
+                displayNumber == displayNumber
+            } else{
+                
+                calcCore.digit1 == calcCore.digit2
+                displayNumber = "\(calcCore.calcLogic()!)"
+                
+            }
+            
             if symbol == "AC" {
+                displayNumber = "0"
                 calcCore.digit1 = nil
                 calcCore.digit2 = nil
                 calcCore.calculationResult = nil
@@ -186,14 +210,11 @@ struct ContentView: View {
                 calcCore.digit1 = Double(displayNumber)
             }
             
-            
-            if symbol == "=" {
+            if symbol == "+-" {
                 displayNumber = "\(String(describing: calcCore.calcLogic()!))"
             }
             
-            if symbol == "." && calcCore.digit1 == nil{
-                displayNumber = "\(0)."
-            }
+            
             
             
         }
