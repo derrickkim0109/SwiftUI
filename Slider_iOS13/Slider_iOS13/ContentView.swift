@@ -35,7 +35,6 @@ struct ContentView: View {
                 Text("\(Int(progressValue))")
                     .font(.largeTitle)
             }
-        
     }
 }
 
