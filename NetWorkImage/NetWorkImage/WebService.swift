@@ -47,8 +47,6 @@ class WebService {
 // Image
 class ImageLoader: ObservableObject {
     
-    
-    
     // Fields
     @Published var image : UIImage?
     
